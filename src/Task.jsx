@@ -1,11 +1,14 @@
-function Task() {
+import CheckBox from "./CheckBox";
+
+function Task({ name, done }) {
   return (
-    <div className="bg-gray-100 m-2 rounded-md">
-      <input
-        type="checkbox"
-        className="m-4 size-4"
+    <div className="bg-gray-100 m-2 rounded-md flex items-center">
+      <CheckBox
+        checked={done}
+        onClick={() => alert("clicked")}
       />
-      test task
+
+      <p className="text-center">{name}</p>
     </div>
   );
 }
