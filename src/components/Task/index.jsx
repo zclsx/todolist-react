@@ -1,44 +1,44 @@
-import CheckBox from "./CheckBox";
-import { useState } from "react";
+import clsx from 'clsx'
+import { useState } from 'react'
+
+import CheckBox from './CheckBox'
+
 function Task({ name, done, onToggle, onTrash, onSave }) {
-  const [editMode, setEditMode] = useState(false);
+  const [editMode, setEditMode] = useState(false)
   return (
-    <div className="bg-gray-100 m-2 rounded-md flex items-center justify-between p-3">
+    <div className="m-2 flex items-center justify-between rounded-md bg-gray-100 p-3">
       <div className="flex items-center">
         <CheckBox
           checked={done}
           onClick={() => onToggle(!done)}
         />
-        {!editMode && (
+        {!editMode ? (
           <p
-            className={`ml-2 text-center text-base ${
-              done ? "line-through" : ""
-            }`}
+            className={clsx('ml-2 text-center text-base', done ? 'line-through' : '')}
             onClick={() => setEditMode((prev) => !prev)}
           >
             {name}
           </p>
-        )}
-        {editMode && (
+        ) : (
           <form
             onSubmit={(e) => {
-              e.preventDefault();
-              setEditMode(false);
+              e.preventDefault()
+              setEditMode(false)
             }}
           >
             <input
               type="text"
               value={name}
-              className="bg-gray-100 ml-2"
+              className="ml-2 bg-gray-100"
               onChange={(e) => onSave(e.target.value)}
               onBlur={() => setEditMode(false)}
-            ></input>
+            />
           </form>
         )}
       </div>
 
       <div
-        className="w-3 h-3 mr-4"
+        className="mr-4 size-3"
         onClick={onTrash}
       >
         <svg
@@ -49,7 +49,7 @@ function Task({ name, done, onToggle, onTrash, onSave }) {
         </svg>
       </div>
     </div>
-  );
+  )
 }
 
-export default Task;
+export default Task
