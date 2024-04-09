@@ -1,0 +1,7 @@
+{
+  "extends": "@bit-ocean/tsconfig/react",
+  "compilerOptions": {
+    "allowJs": true
+  },
+  "include": ["src"]
+}

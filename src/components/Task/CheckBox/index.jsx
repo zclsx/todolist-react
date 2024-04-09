@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export default function CheckBox({ checked = false, onClick }) {
   return (
     <div
@@ -13,5 +11,5 @@ export default function CheckBox({ checked = false, onClick }) {
         readOnly
       />
     </div>
-  );
+  )
 }
